@@ -1,3 +1,11 @@
+<?php
+    include 'controller/connection.php';
+    session_start();
+
+    $indexHomeID = $_SESSION['id'];
+    $queryPortofolioHome = mysqli_query($connection, "SELECT * FROM website_profile WHERE userId='$indexHomeID'");
+    $rowHomeIndex = mysqli_fetch_assoc($queryPortofolioHome);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,15 +55,15 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <!-- <a class="navbar-brand js-scroll-trigger" href="#page-top">
 			<img class="img-fluid" src="images/logo.png" alt="" />
-		</a>
+		</a> -->
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
+          <ul class="navbar-nav text-uppercase mx-auto">
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
             </li>
@@ -82,18 +90,18 @@
       </div>
     </nav>
 	
-	<section id="home" class="main-banner parallaxie" style="background: url('uploads/banner-01.jpg')">
+	<section id="home" class="main-banner parallaxie" style="background: url('admin/img/heroBanner/<?php echo $rowHomeIndex['banner'] ?>')">
 		<div class="heading">
-			<h1>hello i'm Dominic</h1>
-			<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+			<h1>hello i'm <br> <?php echo $rowHomeIndex['title'] ?></h1>
+			<!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p> -->
 			<h3 class="cd-headline clip is-full-width">
-				<span>Lorem ipsum dolor sit amet </span>
-				<span class="cd-words-wrapper">
+				<span><?php echo $rowHomeIndex['subtitle'] ?></span>
+				<!-- <span class="cd-words-wrapper">
 					<b class="is-visible">Web Developer</b>
 					<b>Web Design</b>
 					<b>Creative Design</b>
 					<b>Graphic Design</b>
-				</span>
+				</span> -->
 			</h3>
 		</div>
 	</section>
