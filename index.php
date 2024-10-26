@@ -1,10 +1,13 @@
 <?php
-    include 'controller/connection.php';
+    include'admin/controller/connection.php';
     session_start();
+    if(empty($_SESSION['id'])) {
+        header('Location: login.php');
+    }
 
-    $indexHomeID = $_SESSION['id'];
-    $queryPortofolioHome = mysqli_query($connection, "SELECT * FROM website_profile WHERE userId='$indexHomeID'");
-    $rowHomeIndex = mysqli_fetch_assoc($queryPortofolioHome);
+    $loginID = $_SESSION['id'];
+    $queryHero = mysqli_query($connection, "SELECT * FROM portofolio_hero WHERE userId='$loginID'");
+    $rowHero = mysqli_fetch_assoc($queryHero);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +20,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
  
      <!-- Site Metas -->
-    <title>Dominic - Responsive HTML5 OnePage Template</title>  
+    <title><?php echo isset($rowHero['title']) ? $rowHero['title'] : '' ?></title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -65,7 +68,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase mx-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
+              <a class="nav-link js-scroll-trigger active" href="#hero">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
@@ -90,18 +93,12 @@
       </div>
     </nav>
 	
-	<section id="home" class="main-banner parallaxie" style="background: url('admin/img/heroBanner/<?php echo $rowHomeIndex['banner'] ?>')">
+	<section id="hero" class="main-banner parallaxie" style="background: url('admin/img/heroBanner/<?php echo isset($rowHero['banner']) ? $rowHero['banner'] : 'default.jpg' ?>')">
 		<div class="heading">
-			<h1>hello i'm <br> <?php echo $rowHomeIndex['title'] ?></h1>
+			<h1>hello, i'm<br><?php echo isset($rowHero['title']) ? $rowHero['title'] : '' ?></h1>
 			<!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p> -->
 			<h3 class="cd-headline clip is-full-width">
-				<span><?php echo $rowHomeIndex['subtitle'] ?></span>
-				<!-- <span class="cd-words-wrapper">
-					<b class="is-visible">Web Developer</b>
-					<b>Web Design</b>
-					<b>Creative Design</b>
-					<b>Graphic Design</b>
-				</span> -->
+				<span><?php echo isset($rowHero['subtitle']) ? $rowHero['subtitle'] : '' ?></span>
 			</h3>
 		</div>
 	</section>

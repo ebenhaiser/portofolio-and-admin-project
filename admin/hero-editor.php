@@ -2,7 +2,7 @@
     session_start();
     include'controller/connection.php';
     $homeUserID = $_SESSION['id'];
-    $queryHomeEditor = mysqli_query($connection, "SELECT * FROM website_profile WHERE userId='$homeUserID'");
+    $queryHomeEditor = mysqli_query($connection, "SELECT * FROM portofolio_hero WHERE userId='$homeUserID'");
     $rowHomeEditor = mysqli_fetch_assoc($queryHomeEditor);
 
     if(isset($_POST['save'])) {
@@ -112,8 +112,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Home Editor</h1>
-                    <p class="mb-4">This is the section where you can edit the home section of your portfolio website.</p>
+                    <h1 class="h3 mb-2 text-gray-800">About Me Editor</h1>
+                    <p class="mb-4">This is the section where you can edit the 'about me' section of your portfolio website.</p>
 
                     <!-- Content Row -->
                     <!-- Area Chart -->

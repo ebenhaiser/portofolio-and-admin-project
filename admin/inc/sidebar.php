@@ -92,9 +92,9 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="home-editor.php">
+                <a class="nav-link" href="hero-editor.php">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Home</span></a>
+                    <span>Hero</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
