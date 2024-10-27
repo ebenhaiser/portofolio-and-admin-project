@@ -97,6 +97,13 @@
                     <span>Hero</span></a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="about-editor.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>About</span></a>
+            </li>
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="about-editor.php">

@@ -2,10 +2,10 @@
     include'admin/controller/connection.php';
     session_start();
     if(empty($_SESSION['id'])) {
-        header('Location: login.php');
+        $userID = 1;
+    } else {
+        $userID = $_SESSION['id'];
     }
-
-    $userID = $_SESSION['id'];
 
     // HERO SECTION
     $queryHero = mysqli_query($connection, "SELECT * FROM portofolio_hero WHERE userId='$userID'");

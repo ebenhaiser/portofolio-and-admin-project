@@ -29,14 +29,14 @@
                     unlink('img/heroBanner/' . $rowHomeEditor['banner']);
                     move_uploaded_file($_FILES['banner']['tmp_name'], 'img/heroBanner/' . $img_name);
     
-                    $update = mysqli_query($connection, "UPDATE website_profile SET title='$homeTitle', subtitle='$homeSubtitle', banner='$img_name' WHERE id ='$homeUserID'");
+                    $update = mysqli_query($connection, "UPDATE portofolio_hero SET title='$homeTitle', subtitle='$homeSubtitle', banner='$img_name' WHERE userId ='$homeUserID'");
                     if (!$update) {
                         echo "Error updating record: " . mysqli_error($connection);
                         die;
                     }
                 };
             } else {
-                $update = mysqli_query($connection, "UPDATE website_profile SET title='$homeTitle', subtitle='$homeSubtitle' WHERE id ='$homeUserID'");
+                $update = mysqli_query($connection, "UPDATE portofolio_hero SET title='$homeTitle', subtitle='$homeSubtitle' WHERE userId ='$homeUserID'");
             };
         } else {
             // insert query
@@ -56,10 +56,10 @@
                     // pindahkan gambar dari tmp folder ke folder yang sudah kita buat
                     move_uploaded_file($_FILES['banner']['tmp_name'], 'img/heroBanner/' . $img_name);
     
-                    $insert = mysqli_query($connection, "INSERT INTO website_profile (title, subtitle, banner) VALUES ('$homeTitle','$homeSubtitle','$img_name')");
+                    $insert = mysqli_query($connection, "INSERT INTO portofolio_hero (userId, title, subtitle, banner) VALUES ('$homeUserID','$homeTitle','$homeSubtitle','$img_name')");
                 };
             } else {
-                $insert = mysqli_query($connection, "INSERT INTO website_profile (title, subtitle) VALUES ('$homeTitle','$homeSubtitle')");
+                $insert = mysqli_query($connection, "INSERT INTO portofolio_hero (userId, title, subtitle) VALUES ('$homeUserID', '$homeTitle','$homeSubtitle')");
             };
         };
     };
@@ -144,7 +144,7 @@
                                             width: 100%;
                                         }
                                     </style>
-                                    <img class="logo-website-settings-upload mt-3" src="img/heroBanner/<?php echo isset($rowHomeEditor['banner']) ? $rowHomeEditor['banner'] : 'default.jpg' ?>" alt="">
+                                    <img class="logo-website-settings-upload mt-3" src="img/heroBanner/<?php echo !empty($rowHomeEditor['banner']) ? $rowHomeEditor['banner'] : 'default.jpg' ?>" alt="">
                                 </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary" name="save" type="submit">

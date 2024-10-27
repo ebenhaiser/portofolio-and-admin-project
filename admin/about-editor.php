@@ -26,8 +26,8 @@
                 } else {
                     // pindahkan gambar dari tmp folder ke folder yang sudah kita buat
                     // unlink() : me-delete file
-                    unlink('img/heroBanner/' . $rowAboutEditor['picture']);
-                    move_uploaded_file($_FILES['picture']['tmp_name'], 'img/heroBanner/' . $img_name);
+                    unlink('img/aboutPicture/' . $rowAboutEditor['picture']);
+                    move_uploaded_file($_FILES['picture']['tmp_name'], 'img/aboutPicture/' . $img_name);
     
                     $update = mysqli_query($connection, "UPDATE website_profile SET title='$aboutName', subtitle='$aboutSummary', picture='$img_name' WHERE id ='$aboutUserID'");
                     if (!$update) {
@@ -54,7 +54,7 @@
                     die;
                 } else {
                     // pindahkan gambar dari tmp folder ke folder yang sudah kita buat
-                    move_uploaded_file($_FILES['picture']['tmp_name'], 'img/heroBanner/' . $img_name);
+                    move_uploaded_file($_FILES['picture']['tmp_name'], 'img/aboutPicture/' . $img_name);
     
                     $insert = mysqli_query($connection, "INSERT INTO website_profile (title, subtitle, banner) VALUES ('$aboutName','$aboutSummary','$img_name')");
                 };
@@ -119,32 +119,42 @@
                     <!-- Area Chart -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Home of Your Portofolio</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">About Me Section of Your Portofolio</h6>
                         </div>
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="aboutName">Home Title</label>
+                                    <label for="aboutName">Name</label>
                                     <input type="text" class="form-control" id="aboutName" name="aboutName"
-                                        value="<?php echo isset($rowAboutEditor['title']) ? $rowAboutEditor['title'] : '' ?>">
+                                        value="<?php echo isset($rowAboutEditor['name']) ? $rowAboutEditor['name'] : '' ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="aboutSummary">Home Subtitle</label>
-                                    <input type="text" class="form-control" id="aboutSummary" name="aboutSummary"
-                                        value="<?php echo isset($rowAboutEditor['subtitle']) ? $rowAboutEditor['subtitle'] : '' ?>">
+                                    <label for="aboutSummary">Summary</label>
+                                    <textarea class="form-control" id="aboutSummary" name="aboutSummary" rows="5"><?php echo isset($rowAboutEditor['summary']) ? $rowAboutEditor['summary'] : ''; ?></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label for="banner">Home Banner</label>
-                                    <input type="file" class="form-control" id="banner" name="banner"
-                                        value="">
-                                    <style>
-                                        .logo-website-settings-upload {
-                                            border-radius: 10px;
-                                            border: solid 1px black;
-                                            width: 100%;
-                                        }
-                                    </style>
-                                    <img class="logo-website-settings-upload mt-3" src="img/heroBanner/<?php echo isset($rowAboutEditor['picture']) ? $rowAboutEditor['picture'] : 'default.jpg' ?>" alt="">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="banner">Picture</label>
+                                            <input type="file" class="form-control" id="banner" name="picture"
+                                            value="">
+                                            <style>
+                                                .logo-website-settings-upload {
+                                                    border-radius: 10px;
+                                                    border: solid 1px black;
+                                                    width: 100%;
+                                                }
+                                            </style>
+                                            <img class="logo-website-settings-upload mt-3" src="img/aboutPicture/<?php echo isset($rowAboutEditor['picture']) ? $rowAboutEditor['picture'] : '' ?>" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- <div class="form-group">
+                                            <label for="cv">Curriculum Vitae</label>
+                                            <input type="file" class="form-control" id="cv" name="cv"
+                                                value="<?php echo isset($rowAboutEditor['cv']) ? $rowAboutEditor['cv'] : '' ?>">
+                                        </div> -->
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary" name="save" type="submit">
