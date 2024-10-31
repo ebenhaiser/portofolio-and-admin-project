@@ -1,0 +1,4 @@
+
+
+where : index.php#testimonial
+bug   : the testimonial loop, always 2 times, even only have one data

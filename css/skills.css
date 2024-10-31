@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------
+# Skill Text Box
+--------------------------------------------------------------*/
+
+.skills-title {
+  font-size: 26px;
+  font-weight: 8000;
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
+  /* justify-content: center; */
+  color: #3b434a;
+}
+
+.skillBox .skillBox::before,
+.skillBox::after {
+  box-sizing: border-box;
+}
+
+.skillBox .container {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  /* border: 10px solid black; */
+}
+
+.skillBox .container h3 {
+  width: flex;
+  height: 20px;
+  font-size: 16px;
+  /* font-weight: 700; */
+  /* background-color: #ffc85a; */
+  padding: 10px 20px 29px 20px;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  border: 4px solid #808080;
+  border-radius: 10px;
+  margin-bottom: 0;
+}
+
+.skillBox .container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+@media (max-width: 575px) {
+  .skillBox .container h3 {
+    font-size: 14px;
+    height: 10px;
+    padding: 3px 8px 19px 8px;
+    border: 3px solid #808080;
+    border-radius: 8px;
+  }
+
+}

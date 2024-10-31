@@ -1,0 +1,57 @@
+/* Gaya untuk modal */
+.modal {
+  display: none;
+  /* Sembunyikan modal secara default */
+  position: fixed;
+  /* Tetap di tempat saat scroll */
+  z-index: 9999;
+  /* Di atas konten lain */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Lebar penuh */
+  height: 100%;
+  /* Tinggi penuh */
+  overflow: auto;
+  /* Aktifkan scroll jika diperlukan */
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  /* Latar belakang transparan */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* Atur margin */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1000px;
+  /* Lebar modal */
+  transform: translateY(-50px);
+  /* Posisikan modal di atas */
+  opacity: 0;
+  /* Sembunyikan modal */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* Transisi untuk animasi */
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  /* Kembalikan posisi modal */
+  opacity: 1;
+  /* Tampilkan modal */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
